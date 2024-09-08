@@ -1,0 +1,190 @@
+body{
+  background-color:rgb(250, 253, 255);
+}
+video {
+    width: 100%;
+    height: 200vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+ }
+  * {
+    box-sizing: border-box;
+}
+  
+body {
+    margin: 0;
+}
+  
+  /* Style the header */
+.head{
+    background-color: rgba(52, 73, 94, 0.0);
+    padding: 10px;
+    text-align:center;
+    color:rgb(244, 243, 250);
+    font-size: 100px; /* Adjust the size as needed */
+    margin: 50px;
+}
+  
+  /* Style the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color:rgba(44, 62, 80,1.0);
+    text-align: center;
+}
+  
+  /* Style the topnav links */
+.topnav a {
+    float:right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+  /* Change color on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+  /* search bar  */
+.user-interface {
+    text-align: center; 
+    margin: 3px;
+}
+#locationInput {
+  background-color:rgba(189, 195, 199,1.0);
+    padding: 10px;
+    width: 60%;
+    border: none;
+    border-radius: 10px;
+    color: black;   
+}
+
+#search-button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+/* ---------------------------------Header----------------------------------------- */
+
+/*----------------------------------Current Weather Start---------------------------*/
+.card-body-current-weather:hover {
+  background-color: rgba(255, 255, 255,1.0);
+  border-color: rgba(194, 54, 22,1.0);
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+  font-size:120%;
+}
+.weatherIcon{
+  background-position:25% !important;
+  background-repeat: no-repeat !important;
+  background-size: contain;
+  display: block;
+  /* height: 25%; */
+  margin: 2rem auto;
+}
+/*----------------------------------Current Weather Start---------------------------*/
+
+/*--------------------------------- Today HighLight start-------------------------- */
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 20px;
+}
+.row {
+  margin-bottom: 20px;
+}
+
+.col {
+  margin-bottom: 10px;
+}
+
+
+.humidity, .wind-speed, .clouds, .pressure, .uv-index, .sunrise, .sunset, .temperature {
+  font-size: 1.2em;
+  color: #333;
+  text-align: center;
+}
+
+.humidity i, .wind-speed i, .clouds i, .pressure i, .uv-index i, .sunrise i, .sunset i, .temperature i {
+  font-size: 1.5em;
+}
+
+h3 {
+  margin: 0;
+}
+
+span {
+  font-size: 1.2em;
+}
+
+/*--------------------------------------------Highlight End--------------------------------------*/
+
+/*-------------------------------------Hourly Forcast--------------------------------------------*/
+.small-card {
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+.small-card .weatherIcon {
+  font-size: 1.5rem;
+}
+.small-card:hover{
+  background-color:rgba(44, 62, 80,0.4);
+  cursor: pointer;
+  transform: scale(1.5);
+  transition: transform 0.3s ease;
+}
+/* -------------------------------------Hourly Forcast End------------------------------------ */
+
+/*---------------------------------------WEEK Forcast Start -----------------------------------*/
+.card-body-week-forcast:hover{
+  background-color:rgba(44, 62, 80,0.4);
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+}
+/*---------------------------------------WEEK Forcast End -------------------------------------*/
+
+
+
+/*--------------------------------------Map Start-----------------------------------------------*/
+
+.card-body iframe {
+  border: none; 
+  border-radius: 0.25rem;
+}
+
+.card-footer {
+  background-color: #f8f9fa; 
+  padding: 0.75rem; 
+}
+
+/*---------------------------------------Map end---------------------------------------------------*/
+
+/*--------------------------------------All Crad CSS Start------------------------------- */
+.card-header{
+  background-color:rgba(44, 62, 80,1.0);
+  color: #fff;
+  
+}
+
+
+/*--------------------------------------All Crad CSS Start------------------------------- */

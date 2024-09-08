@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="">
+        <title>❄️WORLD ATMOSFORECAST💧</title>
+        
+
+        <!-- boostrap css -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+
+        <!-- Css File -->
+        <link rel="stylesheet" href="stylees.css">
+
+        <!-- FontAwesome  -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    </head>
+    <body>
+        <section id="home"></section>
+        <header>
+            <!-- Background Video -->
+            <video src="video/night sky.mp4" autoplay muted loop
+                style="width: 100%; height: 50vh; object-fit: cover;"
+                playsinline></video>
+
+            <!-- -------------------------------------Header Area Start-------------------------------------------->
+
+            <!-- nav bar -->
+            <div class="topnav">
+                <a href="#map">MAP</a>
+                <a href="#week-forcast">WEEK-Forcast</a>
+                <a href="#daily-forcast">DAILY-Forcast</a>
+                <a href="#current-weather">CURRENT</a>
+                <a href="#home">HOME</a>
+
+            </div>
+
+            <div class="head">
+                <h1> 🌍 <b>WORLD ATMOSFORECAST</b> </h1>
+            </div>
+
+            <div class="user-interface">
+                <input type="text" id="locationInput"
+                    placeholder="Enter location" />
+                    <button id="search-button" onclick="findUserLocation()">Search</button>
+            </div>
+        </header>
+        <br>
+        <!-- ---------------------------------------------header area end------------------------------------- -->
+
+        <!-- -------------------------------------------Current Weather Card Start----------------------------------------- -->
+        <section id="current-weather">
+            <div class="container mt-5">
+                <div class="col-md-12 text-center">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">CURRENT WEATHER 🍃🍃🍃</h3>
+                        </div>
+                        <div class="card-body-current-weather">
+                            <div class="weatherIcon mb-3" id="weatherIcon" style="width: 100px; height: 50px;">
+                                
+                            </div>
+                            <h2 class="temperature mb-2 fw-bold">25°C</h2>
+                            <div class="feelslike fw-bold">Feels Like: 28°C</div>
+                            <div class="description fw-bold">Clear Sky</div>
+                            <hr />
+                            <div class="date fw-bold">September 7, 2024</div>
+                            <div class="country fw-bold">Country: Sri Lanka</div>
+                            <div class="city fw-bold">Anuradhapura</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Today Highlights -->
+            <div class="container mt-5">
+                <div class="col-md-12 text-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="humidity">
+                                        Humidity <i class="fa-solid fa-water"></i>
+                                        <h3 id="HValue">40%</h3>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="wind-speed">
+                                        Wind Speed <i class="fa-solid fa-wind"></i>
+                                        <h3 id="WValue">12 km/h</h3>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="clouds">
+                                        Clouds <i class="fa-solid fa-cloud"></i>
+                                        <h3 id="CValue">10%</h3>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="pressure">
+                                        Pressure <i
+                                            class="fa-solid fa-gauge-high"></i>
+                                        <h3 id="PValue">1015 hPa</h3>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <hr />
+                            <div class="row">
+                                <div class="col">
+                                    <div class="uv-index">
+                                        UV Index <i class="fa-solid fa-sun"></i>
+                                        <h3 id="UVValue">5</h3>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="sunrise">
+                                        <i class="fa-solid fa-sun"></i> Sunrise
+                                        <br />
+                                        <span id="SRValue">6:30 AM</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="sunset">
+                                        <i class="fa-solid fa-sun"></i> Sunset
+                                        <br />
+                                        <span id="SSValue">7:45 PM</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="temperature">
+                                        Temperature <i
+                                            class="fa-solid fa-thermometer-half"></i>
+                                        <br />
+                                        <span id="TempValue">22°C</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- -------------------------------------------Hourly Forecast Start----------------------------------------- -->
+        <section id="daily-forcast">
+            <div class="container mt-5">
+                <!-- <h3 class="text-center">Hourly Forecast</h3> -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Today - September 7, 2024</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+    
+                            <!-- Hour 1 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-sun"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>12:00 AM</strong></p>
+                                    <p>22°C</p>
+                                    <p>Clear</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 2 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-moon"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>1:00 AM</strong></p>
+                                    <p>20°C</p>
+                                    <p>Clear</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 3 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>2:00 AM</strong></p>
+                                    <p>19°C</p>
+                                    <p>Cloudy</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 4 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>3:00 AM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 5 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>4:00 AM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 6 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>5:00 AM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 7 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>6:00 AM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 8 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>7:00 AM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 9 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>8:00 AM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 10 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>9:00 AM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 11 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>10:00 AM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 12 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>11:00 AM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 13 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>12:00 PM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 14 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>13:00 PM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 15 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>14:00 PM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+                            <!-- Hour 16 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>15:00 PM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 17 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>16:00 PM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 18 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>17:00 PM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 19 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>18:00 PM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 20 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>19:00 PM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 22 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>21:00 PM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 23 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>22:00 PM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 24 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>23:00 PM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                            <!-- Hour 25 -->
+                            <div class="col-1 mb-2">
+                                <div class="small-card text-center">
+                                    <div class="weatherIcon mb-2">
+                                        <i class="fa-solid fa-cloud-showers-heavy"
+                                            style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <p><strong>12:00 AM</strong></p>
+                                    <p>18°C</p>
+                                    <p>Rain</p>
+                                </div>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <p><b>Hourly Forecast Data - Updated at 12:00 AM</b></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+       
+
+        <!-- -------------------------------------------Hourly Forecast End----------------------------------------- -->
+
+        <!-- -------------------------------------------Weekly Forecast Start----------------------------------------- -->
+        <section id="week-forcast">
+            <div class="container mt-5">
+                <!-- <h3 class="text-center">7-Day Forecast</h3> -->
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h3>Weekly Weather Forecast</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <!-- Day 1 Forecast -->
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-center">
+                                    <div class="card-body-week-forcast">
+                                        <div class="weatherIcon mb-2">
+                                            
+                                            <i class="fa-solid fa-sun"
+                                                style="font-size: 2.5rem;"></i>
+                                        </div>
+                                        <h5 class="card-title">Monday</h5>
+                                        <p class="card-text">Sep 8, 2024</p>
+                                        <p>High: <strong>30°C</strong></p>
+                                        <p>Low: <strong>20°C</strong></p>
+                                        <p>Sunny</p>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- Day 2 Forecast -->
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-center">
+                                    <div class="card-body-week-forcast">
+                                        <div class="weatherIcon mb-2">
+                                            <i class="fa-solid fa-cloud"
+                                                style="font-size: 2.5rem;"></i>
+                                        </div>
+                                        <h5 class="card-title">Tuesday</h5>
+                                        <p class="card-text">Sep 9, 2024</p>
+                                        <p>High: <strong>28°C</strong></p>
+                                        <p>Low: <strong>18°C</strong></p>
+                                        <p>Partly Cloudy</p>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- Day 3 Forecast -->
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-center">
+                                    <div class="card-body-week-forcast">
+                                        <div class="weatherIcon mb-2">
+                                            <i
+                                                class="fa-solid fa-cloud-showers-heavy"
+                                                style="font-size: 2.5rem;"></i>
+                                        </div>
+                                        <h5 class="card-title">Wednesday</h5>
+                                        <p class="card-text">Sep 10, 2024</p>
+                                        <p>High: <strong>25°C</strong></p>
+                                        <p>Low: <strong>16°C</strong></p>
+                                        <p>Rainy</p>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- Day 4 Forecast -->
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-center">
+                                    <div class="card-body-week-forcast">
+                                        <div class="weatherIcon mb-2">
+                                            <i
+                                                class="fa-solid fa-cloud-showers-heavy"
+                                                style="font-size: 2.5rem;"></i>
+                                        </div>
+                                        <h5 class="card-title">Thursday</h5>
+                                        <p class="card-text">Sep 11, 2024</p>
+                                        <p>High: <strong>25°C</strong></p>
+                                        <p>Low: <strong>16°C</strong></p>
+                                        <p>Rainy</p>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- Day 5 Forecast -->
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-center">
+                                    <div class="card-body-week-forcast">
+                                        <div class="weatherIcon mb-2">
+                                            <i
+                                                class="fa-solid fa-cloud-showers-heavy"
+                                                style="font-size: 2.5rem;"></i>
+                                        </div>
+                                        <h5 class="card-title">Friday</h5>
+                                        <p class="card-text">Sep 12, 2024</p>
+                                        <p>High: <strong>25°C</strong></p>
+                                        <p>Low: <strong>16°C</strong></p>
+                                        <p>Rainy</p>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- Day 6 Forecast -->
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-center">
+                                    <div class="card-body-week-forcast">
+                                        <div class="weatherIcon mb-2">
+                                            <i
+                                                class="fa-solid fa-cloud-showers-heavy"
+                                                style="font-size: 2.5rem;"></i>
+                                        </div>
+                                        <h5 class="card-title">Saturday</h5>
+                                        <p class="card-text">Sep 13, 2024</p>
+                                        <p>High: <strong>25°C</strong></p>
+                                        <p>Low: <strong>16°C</strong></p>
+                                        <p>Rainy</p>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- Day 7 Forecast -->
+                            <div class="col-md-3 mb-4">
+                                <div class="card text-center">
+                                    <div class="card-body-week-forcast">
+                                        <div class="weatherIcon mb-2">
+                                            <i
+                                                class="fa-solid fa-cloud-showers-heavy"
+                                                style="font-size: 2.5rem;"></i>
+                                        </div>
+                                        <h5 class="card-title">Sunday</h5>
+                                        <p class="card-text">Sep 14, 2024</p>
+                                        <p>High: <strong>25°C</strong></p>
+                                        <p>Low: <strong>16°C</strong></p>
+                                        <p>Rainy</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <p><b>Forecast Data - Updated daily</b></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- -------------------------------------------Weekly Forecast End----------------------------------------- -->
+
+        <!-- -------------------------------------------MAP Start----------------------------------------- -->
+        <section id="map">
+            <div class="container mt-5">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h3>MAP</h3>
+                    </div>
+                    <div class="card-body-map">
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+    
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.113927796723!2d-122.4218106846833!3d37.7749292797582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808f6a4c7b3b%3A0x5baf7e9d78f47b07!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1606746112652!5m2!1sen!2sus"
+                                    width="100%" height="400" style="border:0;"
+                                    allowfullscreen loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <p><b>Map Data - Updated as needed</b></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Google Maps API -->
+      <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places"></script>
+    
+        </section>
+        
+        <!-- -------------------------------------------MAP End----------------------------------------- -->
+
+        <!-- -------------------------------------------Footer Start----------------------------------------- -->
+        <footer class="bg-dark text-white text-center text-lg-start mt-5">
+            <div class="container p-4">
+                <div class="row">
+                    <!-- About Section -->
+                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">WeatherApp</h5>
+                        <p>
+                            Your reliable source for real-time weather updates,
+                            forecasts, and climate insights. Stay informed about
+                            local and global weather conditions with accuracy.
+                        </p>
+                    </div>
+                    
+                    <!-- Quick Links Section -->
+                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Quick Links</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="#home" class="text-white">Home</a></li>
+                            <li><a href="#current-weather"
+                                    class="text-white">CURRENT-WEATHER</a></li>
+                            <li><a href="#daily-forcast" class="text-white">Hourly
+                                    Forecast</a></li>
+                            <li><a href="#week-forcast" class="text-white">7-Day
+                                    Forecast</a></li>
+                            <li><a href="#map" class="text-white">MAP</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info Section -->
+                    <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Contact Us</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li><i class="fa fa-envelope"></i> <a
+                                    href="mailto:info@weatherapp.com"
+                                    class="text-white">info@weatherapp.com</a></li>
+                            <li><i class="fa fa-phone"></i> <a
+                                    href="tel:+1234567890"
+                                    class="text-white">+94
+                                    713-058-104</a></li>
+                            <li><i class="fa fa-map-marker"></i> 123 Panadura -
+                                Galle Road - Colombo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="text-center p-3"
+                style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2024 WeatherApp. All rights reserved.
+            </div>
+        </footer>
+        <!-- -------------------------------------------Footer End----------------------------------------- -->
+
+        <!-- boostrap JS -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+
+            <!-- link JAVA Scrip  -->
+            <script src="app.js"></script>
+
+    </body>
+</html>
